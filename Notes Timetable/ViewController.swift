@@ -205,7 +205,7 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.databaseRef = Database.database().reference()
         let currentUser = Auth.auth().currentUser?.uid
-        print(currentUser!)
+//        print(currentUser!)
     }
     
 }

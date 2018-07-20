@@ -5,9 +5,9 @@ struct NoteItem {
     
     let dbRef: DatabaseReference?
     let description : String
-    var completed : Bool
+    var completed : String
     
-    init(description : String, completed : Bool) {
+    init(description : String, completed : String) {
         self.dbRef = nil
         self.completed = completed
         self.description = description
@@ -17,7 +17,7 @@ struct NoteItem {
         guard
             let value = snapshot.value as? [String: AnyObject],
             let description = value["description"] as? String,
-            let completed = value["completed"] as? Bool else {
+            let completed = value["completed"] as? String else {
                 return nil
             }
         

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		436856FC3F6A13C5A7D99D15 /* Pods_Notes_Timetable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AB9A7176D4550D7E23AADC9 /* Pods_Notes_Timetable.framework */; };
+		43E7649C2101F72C0094AA23 /* notesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E7649B2101F72C0094AA23 /* notesTableViewCell.swift */; };
 		BC00A25D20F2381100FE6D26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC00A25C20F2381100FE6D26 /* AppDelegate.swift */; };
 		BC00A25F20F2381100FE6D26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC00A25E20F2381100FE6D26 /* ViewController.swift */; };
 		BC00A26220F2381100FE6D26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC00A26020F2381100FE6D26 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		0607370BCEC37506BDC2F436 /* Pods-Notes Timetable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes Timetable.release.xcconfig"; path = "Pods/Target Support Files/Pods-Notes Timetable/Pods-Notes Timetable.release.xcconfig"; sourceTree = "<group>"; };
 		0AB9A7176D4550D7E23AADC9 /* Pods_Notes_Timetable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Notes_Timetable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		43E764942101F4110094AA23 /* Notes Timetable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Notes Timetable.entitlements"; sourceTree = "<group>"; };
+		43E7649B2101F72C0094AA23 /* notesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = notesTableViewCell.swift; sourceTree = "<group>"; };
 		B06E282D1DF71BD6EA83442D /* Pods-Notes Timetable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Notes Timetable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Notes Timetable/Pods-Notes Timetable.debug.xcconfig"; sourceTree = "<group>"; };
 		BC00A25920F2381100FE6D26 /* Notes Timetable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notes Timetable.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC00A25C20F2381100FE6D26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +73,7 @@
 		BC00A25020F2381100FE6D26 = {
 			isa = PBXGroup;
 			children = (
+				BC3074E120FFB3D700624C56 /* File.swift */,
 				BC00A25B20F2381100FE6D26 /* Notes Timetable */,
 				BC00A25A20F2381100FE6D26 /* Products */,
 				1AA6691F0BA88B7E4DF9FF48 /* Pods */,
@@ -88,12 +92,13 @@
 		BC00A25B20F2381100FE6D26 /* Notes Timetable */ = {
 			isa = PBXGroup;
 			children = (
+				43E7649B2101F72C0094AA23 /* notesTableViewCell.swift */,
+				43E764942101F4110094AA23 /* Notes Timetable.entitlements */,
 				BC00A26E20F238B600FE6D26 /* GoogleService-Info.plist */,
 				BC00A25C20F2381100FE6D26 /* AppDelegate.swift */,
 				BC00A25E20F2381100FE6D26 /* ViewController.swift */,
 				BCCECE1B20F25E7000340B08 /* NotesViewController.swift */,
 				BC60167020F7D3EB00559B58 /* AddViewController.swift */,
-				BC3074E120FFB3D700624C56 /* File.swift */,
 				BC00A26020F2381100FE6D26 /* Main.storyboard */,
 				BC00A26320F2381500FE6D26 /* Assets.xcassets */,
 				BC00A26520F2381500FE6D26 /* LaunchScreen.storyboard */,
@@ -137,6 +142,11 @@
 				TargetAttributes = {
 					BC00A25820F2381100FE6D26 = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -228,6 +238,7 @@
 				BC3074E220FFB3D700624C56 /* File.swift in Sources */,
 				BC00A25F20F2381100FE6D26 /* ViewController.swift in Sources */,
 				BC00A25D20F2381100FE6D26 /* AppDelegate.swift in Sources */,
+				43E7649C2101F72C0094AA23 /* notesTableViewCell.swift in Sources */,
 				BC60167120F7D3EB00559B58 /* AddViewController.swift in Sources */,
 				BCCECE1D20F25E7000340B08 /* NotesViewController.swift in Sources */,
 			);
@@ -374,9 +385,11 @@
 			baseConfigurationReference = B06E282D1DF71BD6EA83442D /* Pods-Notes Timetable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Notes Timetable/Notes Timetable.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L84EAZA4W2;
+				DEVELOPMENT_TEAM = X3LF452M9Y;
 				INFOPLIST_FILE = "Notes Timetable/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -393,9 +406,11 @@
 			baseConfigurationReference = 0607370BCEC37506BDC2F436 /* Pods-Notes Timetable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Notes Timetable/Notes Timetable.entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L84EAZA4W2;
+				DEVELOPMENT_TEAM = X3LF452M9Y;
 				INFOPLIST_FILE = "Notes Timetable/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

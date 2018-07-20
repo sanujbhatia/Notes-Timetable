@@ -40,10 +40,10 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default , reuseIdentifier: "cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! notesTableViewCell
         let noteItm = items[indexPath.row]
         
-        cell.textLabel?.text = "\(noteItm.description)"
+        cell.noteLabel.text = noteItm.description
         
         return cell
     }
@@ -53,12 +53,17 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
 
     override func viewDidLoad() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 140
         
         let user = Auth.auth().currentUser!
-        let userRef = Database.database().reference().child("users").child(user.uid)
+        let userRef = Database.database().reference().child("users").child(user.uid).child("Notes")
         
         
-        userRef.queryStarting(atValue: "completed").observe(.value) { (snapshot) in
+        userRef.queryOrdered(byChild: "completed").observe(.value, with: { (snapshot) in
             var newItems : [NoteItem] = []
             for child in snapshot.children {
                 if let snapshot = child as? DataSnapshot,
@@ -70,24 +75,21 @@ class NotesViewController: UIViewController, UITableViewDelegate, UITableViewDat
             self.items = newItems
             self.tableView.reloadData()
             
-        }
+        })
  
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        
-        tableView.reloadData()
-        
- }
+    
     
     @IBAction func unwindFromAddView (_ sender : UIStoryboardSegue){
         
         if sender.source is AddViewController {
             if let senderVC = sender.source as? AddViewController {
                 
-                let noteitem = NoteItem(description: senderVC.noteCreated, completed: false)
+                let noteitem = NoteItem(description: senderVC.noteCreated, completed: "true")
                 
                 let user2 = Auth.auth().currentUser!
                 let userRef2 = Database.database().reference().child("users").child(user2.uid)
